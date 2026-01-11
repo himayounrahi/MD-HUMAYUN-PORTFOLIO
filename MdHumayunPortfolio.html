@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Humayun | Data Scientist & Full Stack Developer</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9', /* Sky Blue */
+                        dark: '#0f172a',    /* Slate 900 */
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #020617; /* Very Dark Slate */
+            color: #e2e8f0;
+            overflow-x: hidden;
+            /* Tech Grid Background */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        /* Ambient Glow in the center */
+        .ambient-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 4px; }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="ambient-glow"></div>
+
+    <nav class="fixed w-full z-50 glass-card border-b-0 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-2xl tracking-wider text-white">
+                    MD HUMAYUN,SVNIT<span class="text-primary"></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#about" class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills" class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#education" class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">Education</a>
+                        <a href="#projects" class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#experience" class="hover:text-primary transition px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                    </div>
+                </div>
+                <a href="#contact" class="bg-primary hover:bg-sky-600 text-white px-5 py-2 rounded-full text-sm font-bold transition transform hover:scale-105">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center z-10">
+            
+            <div data-aos="fade-down" class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full border border-primary/20">
+                M.Tech Scholar @ SVNIT
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-extrabold mb-6 leading-tight" data-aos="zoom-in">
+                Hi, I'm <br>
+                <span class="gradient-text">MD Humayun</span>
+            </h1>
+            
+            <p class="text-xl md:text-3xl text-gray-300 mb-8 h-8 font-light" data-aos="fade-up" data-aos-delay="100">
+                I am a <span id="typewriter" class="text-primary font-semibold"></span>
+            </p>
+            
+            <p class="text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed text-lg" data-aos="fade-up" data-aos-delay="200">
+                Aspiring Data Scientist & Full Stack Developer with expertise in Deep Learning and Information Security. Helping 12k+ students on YouTube.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-5 justify-center" data-aos="fade-up" data-aos-delay="300">
+                <a href="#projects" class="px-10 py-4 rounded-full bg-primary text-white font-bold hover:bg-sky-500 transition shadow-lg shadow-sky-500/20">
+                    View Work
+                </a>
+                <a href="https://github.com/mdhumayun" target="_blank" class="px-10 py-4 rounded-full glass-card hover:bg-white/10 transition flex items-center justify-center gap-2 font-semibold">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+            </div>
+            
+            <div class="mt-16 flex gap-8 justify-center text-gray-400" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://linkedin.com/in/mdhumayun" class="hover:text-primary transition text-3xl transform hover:scale-110"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:humayunrahi739@gmail.com" class="hover:text-primary transition text-3xl transform hover:scale-110"><i class="fa-solid fa-envelope"></i></a>
+                <a href="#" class="hover:text-primary transition text-3xl transform hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Technical <span class="gradient-text">Arsenal</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl hover:border-primary/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400 text-3xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">Python</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">C++</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">JavaScript</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">SQL</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl hover:border-purple-500/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 text-purple-400 text-3xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">AI & Data</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">TensorFlow</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">OpenCV</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">Pandas</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">CNNs</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl hover:border-green-500/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mb-6 text-green-400 text-3xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Full Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">React.js</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">Node.js</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">Tailwind</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl hover:border-pink-500/50 transition duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6 text-pink-400 text-3xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Growth & SEO</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">Google Analytics</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">SEO</span>
+                        <span class="px-3 py-1 text-sm bg-white/5 rounded-full border border-white/5">WordPress</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4">
+             <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-aos="fade-up">Academic <span class="gradient-text">Timeline</span></h2>
+             
+             <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-700 before:to-transparent">
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-up">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-primary/20 text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fa-solid fa-graduation-cap text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl border border-white/10 hover:border-primary/30 transition">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                            <h3 class="font-bold text-white text-lg">M.Tech in Computer Science</h3>
+                            <span class="text-primary text-xs font-mono bg-primary/10 px-2 py-1 rounded mt-1 md:mt-0">2025-Present</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Sardar Vallabhbhai National Institute of Technology (SVNIT)</p>
+                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
+                            <li><span class="text-gray-300">Specialization:</span> Information Security & Privacy</li>
+                            <li><span class="text-gray-300">CPI:</span> 8.90 / 10.0</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-purple-500 bg-purple-500/20 text-purple-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fa-solid fa-university text-sm"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl border border-white/10 hover:border-purple-500/30 transition">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                            <h3 class="font-bold text-white text-lg">B.Tech in Computer Science</h3>
+                            <span class="text-purple-400 text-xs font-mono bg-purple-500/10 px-2 py-1 rounded mt-1 md:mt-0">Passed 2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">Bihar Engineering University</p>
+                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
+                            <li><span class="text-gray-300">Focus:</span> Core CSE Engineering</li>
+                            <li><span class="text-gray-300">CGPA:</span> 8.51 / 10.0</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-600 bg-gray-800 text-gray-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <span class="text-xs font-bold">XII</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl border border-white/10 hover:bg-white/5 transition">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                            <h3 class="font-bold text-white text-lg">Intermediate Science</h3>
+                            <span class="text-gray-500 text-xs font-mono bg-gray-800 px-2 py-1 rounded mt-1 md:mt-0">2020</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">CBSE Board</p>
+                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
+                            <li><span class="text-gray-300">Percentage:</span> 68.8%</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-gray-600 bg-gray-800 text-gray-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <span class="text-xs font-bold">X</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-2xl border border-white/10 hover:bg-white/5 transition">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2">
+                            <h3 class="font-bold text-white text-lg">Matriculation</h3>
+                            <span class="text-gray-500 text-xs font-mono bg-gray-800 px-2 py-1 rounded mt-1 md:mt-0">2018</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4">CBSE Board</p>
+                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
+                            <li><span class="text-gray-300">Percentage:</span> 89.0%</li>
+                        </ul>
+                    </div>
+                </div>
+
+             </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4" data-aos="fade-up">Featured <span class="gradient-text">Projects</span></h2>
+            <p class="text-center text-gray-400 mb-16" data-aos="fade-up">Deep Learning & Full Stack Applications</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition duration-300" data-aos="fade-up">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1485796826113-174aa68fd81b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 relative z-20 -mt-12">
+                        <div class="bg-primary w-12 h-12 rounded-full flex items-center justify-center text-white text-xl mb-4 shadow-lg shadow-primary/30">
+                            <i class="fa-solid fa-face-smile"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Face Emotion Detection</h3>
+                        <p class="text-gray-400 text-sm mb-4">CNN Architecture with 92% accuracy on FER-2013 dataset. Real-time inference under 100ms using OpenCV.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded">TensorFlow</span>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 relative z-20 -mt-12">
+                        <div class="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center text-white text-xl mb-4 shadow-lg shadow-green-500/30">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Plant Disease Prediction</h3>
+                        <p class="text-gray-400 text-sm mb-4">AI-powered image classification using ResNet50 (Transfer Learning) with 95% validation accuracy. Flask API backend.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded">ResNet50</span>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded">Flask</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6 relative z-20 -mt-12">
+                        <div class="bg-purple-500 w-12 h-12 rounded-full flex items-center justify-center text-white text-xl mb-4 shadow-lg shadow-purple-500/30">
+                            <i class="fa-solid fa-hands-asl-interpreting"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Sign Language Detection</h3>
+                        <p class="text-gray-400 text-sm mb-4">Real-time gesture recognition using MediaPipe & LSTM. Runs at 30 FPS on standard CPU hardware.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded">MediaPipe</span>
+                            <span class="text-xs bg-white/10 px-2 py-1 rounded">LSTM</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-black/20">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+            
+            <div data-aos="fade-right">
+                <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                    <i class="fa-solid fa-briefcase text-primary"></i> Experience
+                </h2>
+                
+                <div class="relative border-l-2 border-gray-800 ml-3 space-y-12">
+                    <div class="ml-8 relative">
+                        <span class="absolute -left-[41px] top-1 w-5 h-5 bg-primary rounded-full ring-4 ring-dark shadow-[0_0_10px_#0ea5e9]"></span>
+                        <h3 class="text-xl font-bold text-white">Salesforce Developer Intern</h3>
+                        <p class="text-primary text-sm mb-3">DST (Digital Skills Training) | Remote</p>
+                        <ul class="text-gray-400 text-sm list-disc ml-4 space-y-2">
+                            <li>Reduced manual data entry by 35% using Apex triggers.</li>
+                            <li>Customized dashboards for 5+ cross-functional teams.</li>
+                        </ul>
+                    </div>
+
+                    <div class="ml-8 relative">
+                        <span class="absolute -left-[41px] top-1 w-5 h-5 bg-gray-600 rounded-full ring-4 ring-dark"></span>
+                        <h3 class="text-xl font-bold text-white">Digital Growth Strategist</h3>
+                        <p class="text-primary text-sm mb-3">Freelance | 2021 - Present</p>
+                        <ul class="text-gray-400 text-sm list-disc ml-4 space-y-2">
+                            <li>Boosted organic traffic by 85% via advanced SEO.</li>
+                            <li>Achieved 80% increase in engagement using Google Analytics.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left">
+                <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                    <i class="fa-brands fa-youtube text-red-500"></i> Leadership
+                </h2>
+                
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group hover:bg-white/5 transition">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-600/20 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-red-600/30 transition"></div>
+                    
+                    <h3 class="text-2xl font-bold mb-2 text-white">NITIAN RAHI</h3>
+                    <p class="text-gray-400 mb-6">YouTube Educator & Community Leader</p>
+                    
+                    <div class="flex items-center gap-8 mb-6">
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-white">12k+</span>
+                            <span class="text-sm text-gray-400">Subscribers</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-3xl font-bold text-white">100+</span>
+                            <span class="text-sm text-gray-400">Videos</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-sm text-gray-300 mb-6 leading-relaxed">
+                        Founded an educational channel producing technical tutorials and career guidance. Built an organic community of engineering students.
+                    </p>
+                    
+                    <a href="#" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition font-medium">
+                        Visit Channel <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Ready to <span class="gradient-text">Collaborate?</span></h2>
+            <p class="text-gray-400 mb-12 text-lg" data-aos="fade-up">Open to Winter Internship opportunities at Wheeltrix and other Data Science/Full Stack roles.</p>
+            
+            <div class="glass-card p-10 rounded-3xl" data-aos="zoom-in">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <a href="mailto:humayunrahi739@gmail.com" class="flex flex-col items-center group">
+                        <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-2xl group-hover:bg-primary transition duration-300 mb-4 border border-white/10">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <span class="text-sm text-gray-400 group-hover:text-white transition">humayunrahi739@gmail.com</span>
+                    </a>
+                    
+                    <a href="tel:+918789350894" class="flex flex-col items-center group">
+                        <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-2xl group-hover:bg-green-500 transition duration-300 mb-4 border border-white/10">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <span class="text-sm text-gray-400 group-hover:text-white transition">+91-8789350894</span>
+                    </a>
+                    
+                    <a href="https://linkedin.com/in/mdhumayun" class="flex flex-col items-center group">
+                        <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center text-2xl group-hover:bg-blue-600 transition duration-300 mb-4 border border-white/10">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <span class="text-sm text-gray-400 group-hover:text-white transition">LinkedIn Profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-black/40">
+        <p>&copy; 2026 MD Humayun. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50,
+        });
+
+        const words = ["Data Scientist", "Full Stack Developer", "Content Creator"];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const heading = document.getElementById("typewriter");
+            const word = words[i];
+            let j = 0;
+            let isDeleting = false;
+
+            function loop() {
+                heading.innerHTML = word.substring(0, j);
+                
+                if (!isDeleting && j < word.length) {
+                    j++;
+                    timer = setTimeout(loop, 100);
+                } else if (isDeleting && j > 0) {
+                    j--;
+                    timer = setTimeout(loop, 50);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) {
+                        i = (i + 1) % words.length;
+                        timer = setTimeout(typeWriter, 500);
+                        return;
+                    }
+                    timer = setTimeout(loop, 2000);
+                }
+            }
+            loop();
+        }
+        typeWriter();
+    </script>
+</body>
+</html>
