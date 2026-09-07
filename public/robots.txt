@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mdhumayun7.github.io/MD-HUMAYUN-PORTFOLIO/sitemap.xml

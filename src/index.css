@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================================
+   DESIGN TOKENS
+   This is the only place colours are defined. Change a hex here and it
+   updates everywhere, in both themes. Dark values live under `.dark`.
+   =========================================================================== */
+:root {
+  --c-bg: #f4f4f1;
+  --c-surface: #eaeae6;
+  --c-fg: #15171a;
+  --c-accent: #0e5a5b;
+  --c-accent-soft: rgba(14, 90, 91, 0.1);
+  --c-grey-500: #63666b;
+  --c-grey-200: #dededa;
+}
+
+.dark {
+  --c-bg: #0f1113;
+  --c-surface: #171a1d;
+  --c-fg: #e7e9ea;
+  --c-accent: #45b3aa;
+  --c-accent-soft: rgba(69, 179, 170, 0.12);
+  --c-grey-500: #8a8f94;
+  --c-grey-200: #23272b;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Stop anchor links from hiding content under the sticky header. */
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fraunces is a variable font. These axis settings give it character
+   without tipping into novelty: soft terminals, no wonky letterforms. */
+.font-display {
+  font-variation-settings: 'SOFT' 30, 'WONK' 0;
+  letter-spacing: -0.018em;
+}
+
+/* Visible focus for keyboard users only -- never a focus ring on mouse click. */
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--c-accent);
+  color: var(--c-bg);
+}
+
+/* Respect the OS "reduce motion" setting. Everything animated in this site
+   also checks this in JS; this is the safety net. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Tabular figures for metrics, so numbers line up in columns. */
+.nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
