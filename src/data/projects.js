@@ -658,33 +658,120 @@ export const projects = [
   },
 
   // -------------------------------------------------------------------
-  // The two entries below are on GitHub but have no written description yet.
-  // Fill in `problem` and `contribution` and delete the [FILL IN] markers,
-  // or delete the whole object to remove the card.
-  // -------------------------------------------------------------------
   {
-    id: 'ips',
-    title: 'Intrusion Prevention System',
-    tagline: '[FILL IN: one line describing what this project does]',
+    id: 'ips-ml',
+    title: 'IPS-ML / ShieldNet — Intrusion Prevention with Explainable AI',
+    tagline:
+      'An inline prevention system where a false positive drops a real connection, so the cost of being wrong is measured.',
     discipline: 'Security',
-    period: '[FILL IN: date range]',
-    status: 'archived',
-    tech: ['[FILL IN: tech stack]'],
-    problem: '[FILL IN: what problem this solves, 2-3 sentences]',
-    contribution: '[FILL IN: what you specifically built]',
+    period: '2025 - 2026',
+    featured: true,
+    status: 'research',
+    tech: ['Python', 'scikit-learn', 'XGBoost', 'SHAP', 'CICIDS2017', 'pytest'],
+    problem:
+      'A signature-based intrusion prevention system can only catch attacks somebody has already written a rule for, and encryption is steadily removing the payload those rules inspect. Machine learning on flow metadata gets past both limits, but an inline device executes its own predictions: a false positive does not raise an alert for a human to dismiss, it drops a legitimate connection. That changes what the model is. It is no longer a classifier, it is one component of a control system, and it has to be evaluated as one.',
+    contribution:
+      'My M.Tech dissertation. I trained six detectors and a soft-voting ensemble on 2,497,980 audited CICIDS2017 flows and evaluated every one on the identical held-out set of 749,394. Three design decisions carry the work. First, prevention is confidence-aware: instead of argmax, decisions are ALLOW, UNCERTAIN or BLOCK, with the operating point chosen by sweeping the threshold against a stated false-alarm budget. Second, SHAP attributions are computed inside the enforcement path and written to an append-only audit log beside the action, so every block is explainable after the fact. Third, evaluation is security-first: recall and false alarm rate are the headline metrics, not accuracy, and every reported number is recomputed from stored artefacts rather than trusted from a training log.',
+    metrics: [
+      { label: 'Ensemble macro-F1', value: '0.8814' },
+      { label: 'False alarm rate', value: '0.00135' },
+      { label: 'Attack flows missed', value: '0.0149%' },
+      { label: 'Inference median', value: '0.432 ms' },
+    ],
+    deepDive: [
+      {
+        heading: 'Why accuracy is deliberately not the headline',
+        body: 'On this corpus, a model that predicts "benign" for every single flow scores 82.96% accuracy and detects nothing. That failure mode is encoded as a unit test rather than left as a footnote. Logistic Regression demonstrates it live: 0.7958 accuracy looks respectable next to a 0.3955 macro-F1 and a 23.9% false alarm rate, which would be unusable inline.',
+      },
+      {
+        heading: 'Three outcomes instead of two',
+        body: 'Adding an UNCERTAIN band between ALLOW and BLOCK routes 1.62% of traffic to human review. That review cost buys a strict improvement on both error types at once: missed attacks fall to 0.0149% and benign disruption to 0.0486%, against 0.0462% and 0.1337% for the two-outcome configuration. Paying a small, bounded cost to improve both sides of a trade-off is the entire argument of the project.',
+      },
+      {
+        heading: 'Choosing the operating point instead of inheriting it',
+        body: 'Sweeping the allow threshold shows how much of the decision argmax was quietly making for you. At 0.01 the detector catches everything at a 37.5% false alarm rate, which no network would tolerate. At 0.95 the false alarm rate falls to 0.065% but detection drops to 0.9766. At 0.38 detection is 0.9999 with a 0.897% false alarm rate, inside a stated 1% budget.',
+      },
+      {
+        heading: 'Where the gains actually are',
+        body: 'Against the Random Forest baseline reported by Engelen et al. (WTMC 2021) on the same files, improvements concentrate in the rare classes and were obtained without synthetic oversampling: SQL injection F1 rises from 0.11 to 0.50, Heartbleed from 0.77 to 1.00, XSS from 0.18 to 0.40, Bot from 0.60 to 0.78. The common classes were already saturated at ~0.99 and stayed there.',
+      },
+      {
+        heading: 'Stated limitations',
+        body: 'No hyper-parameter tuning, so the reported macro-F1 is a lower bound. A single stratified 70/30 hold-out, so no confidence intervals, and the rarest classes are marked anecdotal. No cross-dataset validation, so generalisation is an objective rather than a result. Enforcement is simulated: the engine returns a firewall rule as a string and never executes it, asserted by a unit test. All thirteen deviations are logged with impact ratings in the repository rather than buried.',
+      },
+    ],
     links: { repo: 'https://github.com/mdhumayun7/ips' },
+    simulationId: 'threshold-sweep',
+    diagrams: {
+      arch: {
+        caption:
+          'The detector is one stage in a control system: every prediction becomes an action, and every action carries its explanation.',
+        lanes: [
+          {
+            title: 'Data',
+            nodes: [
+              { id: 'flows', label: 'CICIDS2017', note: '2.5M audited flows' },
+              { id: 'prep', label: 'Preprocessing', note: 'leakage measured' },
+            ],
+          },
+          {
+            title: 'Detection',
+            nodes: [
+              { id: 'zoo', label: 'Model zoo', note: '6 detectors' },
+              { id: 'ens', label: 'Soft-voting', note: 'ensemble' },
+            ],
+          },
+          {
+            title: 'Decision',
+            nodes: [
+              { id: 'thresh', label: 'Threshold sweep', note: 'against FAR budget' },
+              { id: 'engine', label: 'Action engine', note: 'ALLOW / UNCERTAIN / BLOCK' },
+            ],
+          },
+          {
+            title: 'Accountability',
+            nodes: [
+              { id: 'shap', label: 'SHAP', note: 'at decision time' },
+              { id: 'audit', label: 'Audit log', note: 'append-only' },
+            ],
+          },
+        ],
+        links: [
+          { from: 'flows', to: 'prep' },
+          { from: 'prep', to: 'zoo' },
+          { from: 'zoo', to: 'ens' },
+          { from: 'ens', to: 'thresh' },
+          { from: 'thresh', to: 'engine' },
+          { from: 'engine', to: 'shap' },
+          { from: 'shap', to: 'audit' },
+        ],
+      },
+      flow: {
+        caption: 'One flow through the prevention path, explanation included.',
+        steps: [
+          { id: 'flow', label: 'Flow arrives', detail: 'metadata only' },
+          { id: 'score', label: 'Score', detail: 'ensemble probability' },
+          { id: 'band', label: 'Band', detail: 'allow / uncertain / block' },
+          { id: 'explain', label: 'Explain', detail: 'SHAP attribution' },
+          { id: 'act', label: 'Act + log', detail: '0.432 ms median' },
+        ],
+      },
+    },
   },
 
   {
     id: 'backend-system-design',
-    title: 'Backend System Design',
-    tagline: '[FILL IN: one line describing what this repository contains]',
+    title: 'Low-Level Design — Spotify and Zomato',
+    tagline:
+      'Two consumer systems modelled from scratch: class design first, UML committed alongside the code.',
     discipline: 'Systems',
-    period: '[FILL IN: date range]',
-    status: 'archived',
-    tech: ['[FILL IN: tech stack]'],
-    problem: '[FILL IN: what problem this solves, 2-3 sentences]',
-    contribution: '[FILL IN: what you specifically built]',
+    period: '2026',
+    status: 'shipped',
+    tech: ['Object-oriented design', 'UML', 'Design patterns'],
+    problem:
+      'Low-level design is the interview round that cannot be crammed, because it asks for judgement rather than recall: which entities exist, what each one owns, and where behaviour belongs when requirements change. Reading about design patterns does not build that judgement — modelling a system somebody else already built, and then defending the choices, does.',
+    contribution:
+      'I modelled two systems end to end. A music player application in the shape of Spotify — playlists, playback control, device and strategy handling — and a food delivery system in the shape of Zomato. Each one is committed with its UML diagram beside the implementation, so the class relationships are reviewable independently of the code rather than reconstructed from it.',
     links: { repo: 'https://github.com/mdhumayun7/Backend-System-design' },
   },
 ]

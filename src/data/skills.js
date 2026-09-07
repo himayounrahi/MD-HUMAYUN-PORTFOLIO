@@ -30,6 +30,8 @@ export const skills = [
       'TensorFlow',
       'Keras',
       'scikit-learn',
+      'XGBoost',
+      'SHAP',
       'CNN',
       'LSTM',
       'VAE',
@@ -49,6 +51,6 @@ export const skills = [
   },
   {
     category: 'Infrastructure',
-    items: ['Docker', 'AWS (EC2, S3)', 'GitHub Actions', 'Linux', 'Git', 'Flask REST APIs'],
+    items: ['Docker', 'AWS (EC2, S3)', 'GitHub Actions', 'Linux', 'Git', 'Flask REST APIs', 'pytest'],
   },
 ]

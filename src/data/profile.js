@@ -10,13 +10,14 @@ export const profile = {
 
   // One sentence. This is the single most-read line on the site.
   pitch:
-    'I build machine learning systems that survive contact with real infrastructure — from a multi-agent drone swarm simulator to an SDN intrusion detector measured under live attack traffic.',
+    'I build machine learning systems that survive contact with real infrastructure — an inline intrusion prevention engine evaluated on 2.5 million flows, a multi-agent drone swarm simulator, an SDN detector measured under live attack traffic.',
 
   // Two or three short paragraphs for the About section.
   bio: [
     "I'm an M.Tech student in Computer Science at SVNIT Surat, specialising in Information Security and Privacy, with a GATE CS percentile of 93.8. My work sits where machine learning meets systems engineering: models are the easy half, and the interesting problems live in the pipeline around them.",
-    'Most recently I was a research intern on a MeitY-sponsored project on autonomous drone swarm navigation, where I built BattleWorld — a multi-agent simulator wrapped as a Gymnasium environment — and benchmarked seven commander architectures against it. The resulting paper is under review at IEEE GSCON 2027.',
-    'Before that I built an SDN intrusion detector that I could actually measure under load, reproduced the original Variational Autoencoder paper and diagnosed why it collapsed on face data, and shipped a retrieval-augmented medical assistant running entirely on local inference.',
+    'My M.Tech dissertation, IPS-ML, is an intrusion prevention system built on the premise that an inline device executes its own predictions: a false positive there does not raise an alert, it drops a legitimate connection. So it is evaluated as a control system rather than a classifier, with recall and false alarm rate as the headline metrics and SHAP explanations written into the enforcement path.',
+    'Alongside that I was a research intern on a MeitY-sponsored project on autonomous drone swarm navigation, where I built BattleWorld — a multi-agent simulator wrapped as a Gymnasium environment — and benchmarked seven commander architectures against it. The resulting paper is under review at IEEE GSCON 2027.',
+    'Before those I built an SDN intrusion detector I could measure under load, reproduced the original Variational Autoencoder paper and diagnosed why it collapsed on face data, and shipped a retrieval-augmented medical assistant running entirely on local inference.',
   ],
 
   // Photo: 800x800 WebP recommended, with a JPG fallback of the same name.
@@ -32,7 +33,7 @@ export const profile = {
   // The strip under the bio. Keep to four -- more and none of them register.
   quickFacts: [
     { label: 'Studying', value: 'M.Tech CS, SVNIT Surat' },
-    { label: 'Specialisation', value: 'Information Security & Privacy' },
+    { label: 'Dissertation', value: 'IPS-ML — explainable intrusion prevention' },
     { label: 'GATE CS 2025', value: '93.8 percentile' },
     { label: 'Based in', value: 'Surat, India' },
   ],

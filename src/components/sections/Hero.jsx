@@ -70,9 +70,9 @@ export function Hero() {
             </motion.a>
           </div>
 
-          {/* Photo. The source is a white-background studio shot, so it is
-              desaturated and tinted to sit inside the palette instead of
-              punching a white rectangle through the page in dark mode. */}
+          {/* Photo, in colour. The source is a white-background studio shot,
+              so in dark mode the white surround is knocked back with a blend
+              mode rather than left as a bright rectangle. */}
           <motion.div {...stagger(2)} className="order-first md:order-none">
             <div className="relative w-40 overflow-hidden bg-surface md:w-full">
               <picture>
@@ -82,13 +82,9 @@ export function Hero() {
                   alt={profile.photo.alt}
                   width="800"
                   height="800"
-                  className="block w-full grayscale-[0.85] contrast-[1.04] mix-blend-multiply dark:mix-blend-screen dark:invert-0 dark:grayscale-[0.6] dark:opacity-90"
+                  className="block w-full mix-blend-multiply dark:mix-blend-normal"
                 />
               </picture>
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-accent/10 mix-blend-color"
-              />
             </div>
           </motion.div>
         </div>

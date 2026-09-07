@@ -67,4 +67,18 @@ export const experience = [
     location: 'Patna, Bihar',
     bullets: ['CGPA 8.51 / 10'],
   },
+  {
+    type: 'education',
+    role: 'Intermediate Science (Class XII)',
+    org: 'CBSE Board',
+    period: '2020',
+    bullets: ['68.8%'],
+  },
+  {
+    type: 'education',
+    role: 'Matriculation (Class X)',
+    org: 'CBSE Board',
+    period: '2018',
+    bullets: ['89.0%'],
+  },
 ]

@@ -21,6 +21,9 @@ export const simulations = {
   'latent-space': lazy(() =>
     import('./LatentSpaceSim').then((m) => ({ default: m.LatentSpaceSim })),
   ),
+  'threshold-sweep': lazy(() =>
+    import('./ThresholdSweepSim').then((m) => ({ default: m.ThresholdSweepSim })),
+  ),
   'rag-retrieval': lazy(() =>
     import('./RagRetrievalSim').then((m) => ({ default: m.RagRetrievalSim })),
   ),
