@@ -43,7 +43,7 @@ export const skills = [
   },
   {
     category: 'LLM & retrieval',
-    items: ['LangChain', 'Pinecone', 'Ollama', 'RAG pipelines', 'Transformers', 'Gymnasium'],
+    items: ['LangChain', 'Pinecone', 'Ollama', 'Groq', 'RAG pipelines', 'Transformers', 'Gymnasium'],
   },
   {
     category: 'Networking & security',

@@ -231,7 +231,7 @@ export const projects = [
     tagline:
       'Reproducing Kingma & Welling, then pushing it to faces until it broke — and finding out why.',
     discipline: 'ML',
-    period: 'Jan 2025 - Apr 2026',
+    period: 'Feb 2026 - Apr 2026',
     featured: true,
     status: 'shipped',
     tech: ['Python', 'TensorFlow', 'Keras', 'OpenCV', 'NumPy', 'scikit-learn'],
@@ -261,8 +261,6 @@ export const projects = [
     ],
     links: {
       repo: 'https://github.com/mdhumayun7/vae-aevb-reimplementation',
-      // [FILL IN: confirm CVAE-MNIST-DEPLOY is the live demo of this project.
-      // If it is separate work, remove this line and give it its own entry.]
       demo: 'https://github.com/mdhumayun7/CVAE-MNIST-DEPLOY',
     },
     simulationId: 'latent-space',
@@ -351,7 +349,7 @@ export const projects = [
       },
       {
         heading: 'Why local inference',
-        body: 'Running llama2 and nomic-embed-text through Ollama removes the external API dependency completely: no per-token cost, no rate limit, and no medical queries leaving the machine. The trade-off is that you now own the serving problem, which is what Docker and EC2 are there for.',
+        body: 'Running Llama 3.2 and nomic-embed-text through Ollama removes the external API dependency completely: no per-token cost, no rate limit, and no medical queries leaving the machine. The trade-off is that you now own the serving problem, which is what Docker and EC2 are there for.',
       },
       {
         heading: 'Chunking as a retrieval decision',
@@ -388,7 +386,7 @@ export const projects = [
           {
             title: 'Serving',
             nodes: [
-              { id: 'llm', label: 'Ollama', note: 'llama2, local' },
+              { id: 'llm', label: 'Ollama', note: 'llama 3.2, local' },
               { id: 'api', label: 'Flask API', note: 'Docker on EC2' },
             ],
           },
@@ -424,16 +422,25 @@ export const projects = [
     tagline:
       'An eight-stage nightly data pipeline across eleven sources, built to degrade rather than fail.',
     discipline: 'Automation',
-    period: 'Jun 2024 - Aug 2024',
+    period: 'Apr 2026 - Present',
     featured: true,
     status: 'shipped',
-    tech: ['Python', 'Playwright', 'SQLite', 'GitHub Actions', 'Streamlit', 'OpenPyXL'],
+    tech: [
+      'Python',
+      'Playwright',
+      'SQLite',
+      'GitHub Actions',
+      'Streamlit',
+      'Groq',
+      'OpenPyXL',
+      'SMTP',
+    ],
     problem:
       'This is an ingestion problem wearing the costume of a chore. Eleven upstream sources, none of them stable, none offering an API, all publishing overlapping records under inconsistent titles, with a correctness requirement that the same posting must never be counted twice. Government portals in particular change their markup without warning, so any pipeline that treats a source failure as a run failure produces nothing on most nights.',
     contribution:
-      'I designed the pipeline around partial failure from the start. Each of the 11 scrapers runs headless under Playwright with its own retry isolation, so a broken government portal degrades one source instead of taking the nightly run down. Records land in SQLite through idempotent upserts, which makes reruns safe and the whole pipeline replayable. Entity resolution is the hard part: exact matching finds almost nothing across portals, so I used fuzzy matching via SequenceMatcher at a tuned 0.88 threshold combined with weighted skill scoring, collapsing 793 raw records to 357 ranked matches. The 8-stage enrichment and ranking pipeline runs on GitHub Actions cron with secrets-based configuration and fans out to Excel reports, HTML digests and a Streamlit dashboard.',
+      'I designed the pipeline around partial failure from the start. Each of the eleven scrapers runs headless under Playwright with its own retry isolation, so a broken government portal degrades one source instead of taking the nightly run down. Records land in SQLite through idempotent upserts, which makes reruns safe and the whole pipeline replayable. Entity resolution is the hard part: exact matching finds almost nothing across portals, so I used fuzzy matching via SequenceMatcher at a tuned 0.88 threshold combined with weighted skill scoring, collapsing 793 raw records to 357 ranked matches. Enrichment is optional by design — a Groq-hosted model re-scores and summarises listings when an API key is present, and the rule-based scorer takes over when it is not, so the pipeline never depends on a paid service to run. The eight stages fan out to Excel workbooks, HTML digests, grouped email alerts and a Streamlit dashboard, driven by GitHub Actions cron with secrets-based config.',
     metrics: [
-      { label: 'Sources ingested', value: '11 (9 government)' },
+      { label: 'Sources ingested', value: '11 boards + 9 govt portals' },
       { label: 'Records persisted', value: '2,158' },
       { label: 'After deduplication', value: '793 -> 357' },
       { label: 'Noise reduction', value: '55%' },
@@ -448,8 +455,16 @@ export const projects = [
         body: 'The same posting appears across portals with reworded titles, so exact matching finds almost nothing. SequenceMatcher at a 0.88 similarity threshold collapses near-duplicates without merging genuinely different roles; combined with weighted skill scoring it cut 793 raw records to 357 ranked matches, a 55% reduction in noise.',
       },
       {
-        heading: 'Three outputs, one pipeline',
-        body: 'The same 8-stage run surfaces results as Excel reports, HTML email digests, and a Streamlit dashboard. Keeping enrichment, filtering and ranking as pipeline stages rather than presentation logic is what makes three output formats cheap.',
+        heading: 'Four outputs, one pipeline',
+        body: 'The same eight-stage run surfaces results as Excel workbooks, HTML daily reports, grouped email digests and a Streamlit dashboard with charts and an application tracker. Keeping enrichment, filtering and ranking as pipeline stages rather than presentation logic is what makes four output formats cheap to maintain.',
+      },
+      {
+        heading: 'Optional intelligence, mandatory fallback',
+        body: 'A Groq-hosted model re-scores and summarises listings when an API key is configured, and the rule-based scorer takes over when it is not. Treating the LLM as an enhancement rather than a dependency means the pipeline still produces a ranked digest with no external service, no API key and no per-run cost — which is also what makes it safe to run unattended on a schedule.',
+      },
+      {
+        heading: 'Beyond ingestion',
+        body: 'Later stages parse a resume from PDF or DOCX and adjust bullet emphasis per listing, generate role-specific interview preparation sheets, and track application state across runs. These are the parts that turn a scraper into something actually used every day.',
       },
     ],
     links: { repo: 'https://github.com/mdhumayun7/job-agent' },
@@ -664,7 +679,7 @@ export const projects = [
     tagline:
       'An inline prevention system where a false positive drops a real connection, so the cost of being wrong is measured.',
     discipline: 'Security',
-    period: '2025 - 2026',
+    period: 'Aug 2025 - 2026',
     featured: true,
     status: 'research',
     tech: ['Python', 'scikit-learn', 'XGBoost', 'SHAP', 'CICIDS2017', 'pytest'],
@@ -767,7 +782,7 @@ export const projects = [
     discipline: 'Systems',
     period: '2026',
     status: 'shipped',
-    tech: ['Object-oriented design', 'UML', 'Design patterns'],
+    tech: ['C++', 'Object-oriented design', 'UML', 'Design patterns'],
     problem:
       'Low-level design is the interview round that cannot be crammed, because it asks for judgement rather than recall: which entities exist, what each one owns, and where behaviour belongs when requirements change. Reading about design patterns does not build that judgement — modelling a system somebody else already built, and then defending the choices, does.',
     contribution:

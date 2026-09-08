@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, FileDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowUpRight, Code2, FileDown, Github, Linkedin, Mail } from 'lucide-react'
 import { profile } from '../../data/profile'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { Button } from '../ui/Button'
@@ -53,16 +53,39 @@ export function Hero() {
                 <Linkedin size={15} aria-hidden />
                 LinkedIn
               </Button>
+              <Button href={profile.contact.leetcode} external variant="secondary">
+                <Code2 size={15} aria-hidden />
+                LeetCode
+              </Button>
               <Button href={`mailto:${profile.contact.email}`} variant="secondary">
                 <Mail size={15} aria-hidden />
                 Email
               </Button>
             </motion.div>
 
+            {/* Credentials strip. Static values, deliberately not animated
+                counters -- a number that ticks up reads as decoration and
+                recruiters scroll past it. */}
+            {profile.credentials && (
+              <motion.dl
+                {...stagger(4)}
+                className="mt-10 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-6 sm:grid-cols-4"
+              >
+                {profile.credentials.map((c) => (
+                  <div key={c.label}>
+                    <dd className="nums font-display text-h4 font-semibold leading-none">
+                      {c.value}
+                    </dd>
+                    <dt className="mt-1.5 text-micro text-muted">{c.label}</dt>
+                  </div>
+                ))}
+              </motion.dl>
+            )}
+
             <motion.a
-              {...stagger(4)}
+              {...stagger(5)}
               href="#projects"
-              className="mt-10 inline-flex items-center gap-1.5 border-b border-line pb-1 text-small
+              className="mt-8 inline-flex items-center gap-1.5 border-b border-line pb-1 text-small
                          text-muted transition-colors hover:border-accent hover:text-accent"
             >
               Read the work

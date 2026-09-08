@@ -30,6 +30,16 @@ export const profile = {
 
   location: 'Surat, Gujarat, India',
 
+  // Shown as a strip directly under the hero buttons. Keep this to the
+  // numbers a recruiter actually screens on -- the full academic record,
+  // including Class X and XII, lives in the Experience & education timeline.
+  credentials: [
+    { value: '93.8', label: 'GATE CS 2025 percentile' },
+    { value: 'AIR 33', label: 'NPTEL, national rank' },
+    { value: '8.70', label: 'M.Tech CPI, SVNIT' },
+    { value: '8.51', label: 'B.Tech CGPA' },
+  ],
+
   // The strip under the bio. Keep to four -- more and none of them register.
   quickFacts: [
     { label: 'Studying', value: 'M.Tech CS, SVNIT Surat' },
